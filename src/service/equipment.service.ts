@@ -63,8 +63,6 @@ export default class equipmentService {
     return equipment;
   }
 
-
-
   async updateEquipoById(id: string, equipment: Equipment): Promise<Equipment> {
     const [result, err] = await handlePromise(
       this.equipmentModel.updateOne({ _id: id }, equipment, { new: true })
@@ -78,8 +76,6 @@ export default class equipmentService {
     return equipment; // TODO: Check how return the updated equipment with the last changes
   }
 
-
-
   async deleteEquipoById(id: string): Promise<String> {
     const [equipment, err] = await handlePromise(
       this.equipmentModel.findByIdAndDelete(id)
@@ -89,7 +85,6 @@ export default class equipmentService {
         `Cannot get equipment ${id}. Reason: ${err}`,
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
-      
     }
     return `Equipment with description ${equipment.description} and id ${equipment.id} was deleted successfully`;
   }
